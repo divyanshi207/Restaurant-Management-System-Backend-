@@ -1,126 +1,276 @@
-🍽️ Restaurant Management System - Backend
+# 🍽️ Restaurant Management System - Backend
 
-A microservices-based Restaurant Management System built using Spring Boot. The application manages restaurant operations such as user authentication, menu management, cart handling, and order processing.
+## 📖 Overview
 
-🚀 Architecture
+Restaurant Management System is a backend application developed using Spring Boot and Microservices Architecture. The system provides functionality for user authentication, menu management, cart operations, and order processing. It is designed to simulate the core workflow of an online food ordering platform.
 
-The system is divided into the following microservices:
+The application is divided into independent services, making it scalable, maintainable, and easy to extend.
 
-🔐 Auth Service
+---
 
-Handles user authentication and authorization.
+## 🏗️ Microservices
 
-Features
+### 🔐 Auth Service
+Responsible for user authentication and authorization.
 
-User Registration
-User Login
-JWT Authentication
-Role-based Access Control
-📋 Menu Service
+**Features**
+- User Registration
+- User Login
+- JWT Token Generation
+- Secure Access to APIs
+- Role-Based Authentication
 
-Manages restaurant menu items.
+### 📋 Menu Service
+Responsible for managing restaurant menu items.
 
-Features
+**Features**
+- Add New Menu Items
+- Update Existing Menu Items
+- Delete Menu Items
+- View Available Menu
 
-Add Menu Items
-Update Menu Items
-Delete Menu Items
-View Available Menu
-🛒 Cart Service
+### 🛒 Cart Service
+Responsible for managing customer cart operations.
 
-Handles customer cart operations.
+**Features**
+- Add Items to Cart
+- Update Item Quantity
+- Remove Items from Cart
+- View Cart Details
 
-Features
+### 📦 Order Service
+Responsible for order management.
 
-Add Items to Cart
-Update Quantity
-Remove Items from Cart
-View Cart Details
-📦 Order Service
+**Features**
+- Place Orders
+- View Order Details
+- Track Order Status
+- Manage Order History
 
-Processes customer orders.
+---
 
-Features
+## 🛠️ Technology Stack
 
-Place Orders
-View Order History
-Track Order Status
-Order Management
-🛠️ Tech Stack
-Java 17+
-Spring Boot
-Spring Data JPA
-Spring Security
-JWT Authentication
-Hibernate
-MySQL
-Maven
-REST APIs
-📂 Project Structure
+### Backend
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- Spring Security
+- Hibernate
+
+### Database
+- MySQL
+
+### Authentication
+- JWT (JSON Web Token)
+
+### Build Tool
+- Maven
+
+### API Testing
+- Postman
+
+### Version Control
+- Git
+- GitHub
+
+---
+
+## 📂 Project Structure
+
+```text
 Restaurant-Management-System-Backend
 │
 ├── auth-service
+│
 ├── menu-service
+│
 ├── cart-service
+│
 ├── order-service
 │
 └── README.md
-🔄 Service Communication
-Client
-   │
-   ▼
+```
+
+---
+
+## 🔄 System Workflow
+
+1. User registers and logs in through Auth Service.
+2. Auth Service generates a JWT token.
+3. User accesses protected APIs using the JWT token.
+4. User browses menu items through Menu Service.
+5. User adds items to Cart Service.
+6. User places an order through Order Service.
+7. Order details are stored and managed by Order Service.
+
+---
+
+## 🔑 Authentication Flow
+
+```text
+User
+  │
+  ▼
+Login/Register
+  │
+  ▼
 Auth Service
-   │
-   ├── Menu Service
-   ├── Cart Service
-   └── Order Service
-🔑 Authentication Flow
-User registers or logs in.
-Auth Service generates JWT Token.
-Token is sent with API requests.
-Protected endpoints validate the token before processing requests.
-📌 Main APIs
-Auth Service
-POST /auth/register
-POST /auth/login
-Menu Service
-GET /menu
-POST /menu
-PUT /menu/{id}
-DELETE /menu/{id}
-Cart Service
-POST /cart/add
-PUT /cart/update
-DELETE /cart/remove
-GET /cart
-Order Service
-POST /orders
-GET /orders
-GET /orders/{id}
-⚙️ Setup & Run
-Clone Repository
+  │
+  ▼
+JWT Token Generated
+  │
+  ▼
+Request with JWT Token
+  │
+  ▼
+Protected APIs Access
+```
+
+---
+
+## 📌 API Endpoints
+
+### Auth Service
+
+| Method | Endpoint | Description |
+|----------|----------|-------------|
+| POST | /auth/register | Register User |
+| POST | /auth/login | Login User |
+
+### Menu Service
+
+| Method | Endpoint | Description |
+|----------|----------|-------------|
+| GET | /menu | Get All Menu Items |
+| GET | /menu/{id} | Get Menu Item By ID |
+| POST | /menu | Add Menu Item |
+| PUT | /menu/{id} | Update Menu Item |
+| DELETE | /menu/{id} | Delete Menu Item |
+
+### Cart Service
+
+| Method | Endpoint | Description |
+|----------|----------|-------------|
+| POST | /cart/add | Add Item To Cart |
+| GET | /cart | View Cart |
+| PUT | /cart/update | Update Cart Item |
+| DELETE | /cart/remove | Remove Item From Cart |
+
+### Order Service
+
+| Method | Endpoint | Description |
+|----------|----------|-------------|
+| POST | /orders | Place Order |
+| GET | /orders | Get All Orders |
+| GET | /orders/{id} | Get Order Details |
+| PUT | /orders/{id} | Update Order Status |
+
+---
+
+## ⚙️ Prerequisites
+
+Before running the application, make sure the following are installed:
+
+- Java 17 or above
+- Maven
+- MySQL
+- Git
+- Postman (Optional)
+
+---
+
+## 🚀 Getting Started
+
+### Clone Repository
+
+```bash
 git clone https://github.com/divyanshi207/Restaurant-Management-System-Backend-.git
-Navigate to Project
+```
+
+### Navigate To Project
+
+```bash
 cd Restaurant-Management-System-Backend-
-Build Project
+```
+
+### Configure Database
+
+Update the following properties in `application.properties`:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/restaurant_db
+spring.datasource.username=root
+spring.datasource.password=password
+```
+
+### Build Project
+
+```bash
 mvn clean install
-Run Services
+```
+
+### Run Application
+
+```bash
 mvn spring-boot:run
-🎯 Key Features
+```
 
-✅ Microservices Architecture
-✅ JWT Authentication
-✅ RESTful APIs
-✅ Menu Management
-✅ Cart Management
-✅ Order Processing
-✅ Secure User Access
-✅ Scalable Design
+---
 
-👩‍💻 Author
+## 🧪 Testing APIs
 
-Divyanshi Agrawal
+You can test all endpoints using:
 
-Java Backend Developer | Spring Boot | Microservices | REST APIs | MySQL
+- Postman
 
-⭐ If you found this project useful, consider giving it a star.
+Example Authorization Header:
+
+```http
+Authorization: Bearer <JWT_TOKEN>
+```
+
+---
+
+## 🎯 Key Features
+
+- Microservices Architecture
+- JWT Authentication & Authorization
+- RESTful API Design
+- Secure User Access
+- Menu Management
+- Cart Management
+- Order Processing
+- Scalable and Maintainable Design
+- Spring Security Integration
+- Database Persistence using JPA & Hibernate
+
+## 👩‍💻 Author
+
+### Divyanshi Agrawal
+
+Java Backend Developer
+
+**Skills**
+- Java
+- Spring Boot
+- Microservices
+- REST APIs
+- Spring Security
+- MySQL
+- Hibernate
+- Maven
+- Jwt Tokens
+  
+
+GitHub: https://github.com/divyanshi207
+
+---
+
+## 📜 License
+
+This project is developed for learning and demonstration purposes.
+
+---
+
+⭐ If you found this project useful, don't forget to give it a Star!
